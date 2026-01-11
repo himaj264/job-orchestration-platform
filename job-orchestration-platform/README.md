@@ -1,28 +1,8 @@
 # Event-Driven Distributed Job Orchestration Platform
 
-[![Java](https://img.shields.io/badge/Java-17-orange.svg)](https://openjdk.org/)
-[![Spring Boot](https://img.shields.io/badge/Spring%20Boot-3.2.0-green.svg)](https://spring.io/projects/spring-boot)
-[![Apache Kafka](https://img.shields.io/badge/Apache%20Kafka-3.6-blue.svg)](https://kafka.apache.org/)
-[![Redis](https://img.shields.io/badge/Redis-7.2-red.svg)](https://redis.io/)
-[![PostgreSQL](https://img.shields.io/badge/PostgreSQL-15-blue.svg)](https://www.postgresql.org/)
-[![Docker](https://img.shields.io/badge/Docker-Compose-blue.svg)](https://docs.docker.com/compose/)
 
 A distributed job orchestration system built with Spring Boot microservices and Apache Kafka for asynchronous job processing. This platform demonstrates enterprise-grade patterns for building scalable, fault-tolerant distributed systems.
 
-## Table of Contents
-
-- [Architecture Overview](#architecture-overview)
-- [Key Features](#key-features)
-- [Technology Stack](#technology-stack)
-- [Project Structure](#project-structure)
-- [Prerequisites](#prerequisites)
-- [Quick Start](#quick-start)
-- [API Documentation](#api-documentation)
-- [Configuration](#configuration)
-- [Scaling Workers](#scaling-workers)
-- [Monitoring & Observability](#monitoring--observability)
-- [Design Decisions](#design-decisions)
-- [Troubleshooting](#troubleshooting)
 
 ## Architecture Overview
 
@@ -127,70 +107,6 @@ A distributed job orchestration system built with Spring Boot microservices and 
 | Build Tool | Maven | Dependency management |
 | Java Version | Java 17 | LTS release |
 
-## Project Structure
-
-```
-job-orchestration-platform/
-├── README.md                          # This file
-├── docker-compose.yml                 # Infrastructure setup
-├── .gitignore                         # Git ignore rules
-│
-├── orchestrator-service/              # Job orchestration microservice
-│   ├── pom.xml
-│   ├── Dockerfile
-│   └── src/main/
-│       ├── java/com/jobplatform/orchestrator/
-│       │   ├── OrchestratorApplication.java
-│       │   ├── controller/
-│       │   │   └── JobController.java
-│       │   ├── service/
-│       │   │   ├── JobService.java
-│       │   │   └── KafkaProducerService.java
-│       │   ├── consumer/
-│       │   │   └── JobStatusConsumer.java
-│       │   ├── model/
-│       │   │   ├── Job.java
-│       │   │   └── JobStatus.java
-│       │   ├── repository/
-│       │   │   └── JobRepository.java
-│       │   ├── dto/
-│       │   │   ├── JobRequest.java
-│       │   │   ├── JobResponse.java
-│       │   │   └── JobEvent.java
-│       │   └── config/
-│       │       └── KafkaConfig.java
-│       └── resources/
-│           └── application.yml
-│
-├── worker-service/                    # Job execution microservice
-│   ├── pom.xml
-│   ├── Dockerfile
-│   └── src/main/
-│       ├── java/com/jobplatform/worker/
-│       │   ├── WorkerApplication.java
-│       │   ├── consumer/
-│       │   │   └── JobConsumer.java
-│       │   ├── service/
-│       │   │   ├── JobExecutorService.java
-│       │   │   └── IdempotencyService.java
-│       │   ├── dto/
-│       │   │   └── JobEvent.java
-│       │   └── config/
-│       │       ├── KafkaConsumerConfig.java
-│       │       └── RedisConfig.java
-│       └── resources/
-│           └── application.yml
-│
-└── docs/
-    └── architecture.md                # Detailed architecture documentation
-```
-
-## Prerequisites
-
-### Hardware Requirements (Optimized for M2 Mac 8GB RAM)
-- **Minimum RAM**: 8GB (configuration optimized for this)
-- **Free Disk Space**: 5GB for Docker images
-- **CPU**: Apple M2 or equivalent
 
 ### Software Requirements
 - **Docker Desktop**: v4.0+ with Docker Compose v2
@@ -198,13 +114,11 @@ job-orchestration-platform/
 - **Maven 3.8+**: For building services (optional if using Docker)
 - **Git**: For version control
 
-### Installation Links
-- [Docker Desktop for Mac](https://docs.docker.com/desktop/install/mac-install/)
-- [SDKMAN for Java](https://sdkman.io/) (recommended for Mac)
+
 
 ## Quick Start
 
-### Option 1: Docker Compose (Recommended)
+### Option 1: Docker Compose 
 
 This is the easiest way to run the entire platform locally.
 
@@ -255,12 +169,6 @@ cd worker-service
 java -jar target/worker-service-1.0.0.jar
 ```
 
-### Memory-Optimized Docker Settings (8GB RAM Mac)
-
-Update your Docker Desktop settings:
-- **Memory**: 4GB
-- **Swap**: 1GB
-- **CPUs**: 4
 
 ## API Documentation
 
@@ -345,6 +253,3 @@ PENDING ──────► RUNNING ──────► COMPLETED
                FAILED ──────► RETRY ──────► RUNNING
  
 
-**Author**: Hima Kammachi
-**Course**: Master's Program - Distributed Systems
-**Year**: 2026
